@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">📜 Processar Conversa</h2>
+    
+    <form action="{% url 'processar_conversa' %}" method="post" class="mt-3">
+        {% csrf_token %}
+        
+        <label for="conversa">Conversa:</label>
+        <textarea name="conversa" id="conversa" rows="6" class="form-control" placeholder='{"usuario": "João", "mensagem": "Oi, pessoal! Vamos marcar a reunião?", "hora_envio": "2025-02-18T09:00:00"}, {"usuario": "Maria", "mensagem": "Bom dia! Tudo bem. Que tal às 14h?", "hora_envio": "2025-02-18T09:01:00"}' required></textarea>
+
+        <label for="pergunta" class="mt-3">Pergunta:</label>
+        <input type="text" name="pergunta" id="pergunta" class="form-control" placeholder="Exemplo: Que horas será a reunião?" required>
+        
+        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+    </form>
+
+    {% if resposta %}
+        <div class="mt-4 p-3 bg-light border rounded">
+            <h3>Resposta:</h3>
+            <p>{{ resposta }}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

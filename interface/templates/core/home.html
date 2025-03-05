@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp AI - Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .service-list {
+            list-style: none;
+            padding: 0;
+        }
+        .service-list li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .service-list a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao WhatsApp AI</h1>
+    <p>Escolha um serviço para testar:</p>
+    <ul class="service-list">
+        <li>📜 <a href="{% url 'processar_conversa' %}">Processar Conversa</a></li>
+        <li>🏷️ <a href="{% url 'classificar_mensagem' %}">Classificar Mensagem</a></li>
+        <li>🤖 <a href="{% url 'chatbot' %}">Chatbot</a></li>
+        <li>💬 <a href="{% url 'chatbot_conversacional' %}">Chatbot Conversacional</a></li>
+        <li>🎓 <a href="{% url 'treinar_modelo' %}">Treinar Modelo</a></li>
+    </ul>
+</body>
+</html>

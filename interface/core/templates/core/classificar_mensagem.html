@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">🏷️ Classificar Mensagem</h2>
+    <form action="http://127.0.0.1:8000/classificar_mensagem/" method="post" class="mt-3">
+        {% csrf_token %}
+        <label for="mensagem">Digite sua mensagem:</label>
+        <textarea name="mensagem" id="mensagem" rows="4" class="form-control" required></textarea>
+        <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+    </form>
+
+    {% if resposta %}
+        <div class="mt-4 p-3 bg-light border rounded">
+            <h3>Resultado da Classificação:</h3>
+            <p><strong>Categoria:</strong> {{ resposta.categoria }}</p>
+            <p><strong>Resposta:</strong> {{ resposta.resposta }}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+

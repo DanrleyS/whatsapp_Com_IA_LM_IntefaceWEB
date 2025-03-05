@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Home - WhatsApp AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-5">Bem-vindo ao WhatsApp AI</h1>
+    <p class="text-center">Escolha um serviço para testar:</p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="list-group">
+                <a href="{% url 'processar_conversa' %}" class="list-group-item list-group-item-action">
+                    📜 Processar Conversa
+                </a>
+                <a href="{% url 'classificar_mensagem' %}" class="list-group-item list-group-item-action">
+                    🏷️ Classificar Mensagem
+                </a>
+                <a href="{% url 'chatbot' %}" class="list-group-item list-group-item-action">
+                    🤖 Chatbot
+                </a>
+                <a href="{% url 'chatbot_conversacional' %}" class="list-group-item list-group-item-action">
+                    💬 Chatbot Conversacional
+                </a>
+                <a href="{% url 'treinar_modelo' %}" class="list-group-item list-group-item-action">
+                    📊 Treinar Modelo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

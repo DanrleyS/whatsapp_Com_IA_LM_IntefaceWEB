@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Treinar Modelo - WhatsApp AI{% endblock %}
+
+{% block content %}s
+<div class="container">
+    <h2 class="mt-4">📊 Treinar Modelo</h2>
+    
+    <form id="treinamentoForm" action="http://127.0.0.1:8000/treinar_modelo/" method="post">
+        {% csrf_token %}
+        
+        <div id="mensagens-container">
+            <div class="mensagem-input">
+                <label for="mensagem_0">Mensagem:</label>
+                <input type="text" name="mensagem" id="mensagem_0" class="form-control" required>
+
+                <label for="categoria_0" class="mt-2">Categoria:</label>
+                <input type="text" name="categoria" id="categoria_0" class="form-control" required>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary mt-3" onclick="adicionarMensagem()">➕ Adicionar Entrada</button>
+        <button type="submit" class="btn btn-primary mt-3">🚀 Iniciar Treinamento</button>
+    </form>
+
+    {% if resposta %}
+        <div class="mt-4 p-3 bg-light border rounded">
+            <h3>Resultado do Treinamento:</h3>
+            <p>{{ resposta }}</p>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    let count = 1;
+
+    function adicionarMensagem() {
+        let container = document.getElementById('mensagens-container');
+        let div = document.createElement('div');
+        div.classList.add('mensagem-input', 'mt-3');
+        div.innerHTML = `
+            <label for="mensagem_${count}">Mensagem:</label>
+            <input type="text" name="mensagem" id="mensagem_${count}" class="form-control" required>
+
+            <label for="categoria_${count}" class="mt-2">Categoria:</label>
+            <input type="text" name="categoria" id="categoria_${count}" class="form-control" required>
+        `;
+        container.appendChild(div);
+        count++;
+    }
+</script>
+
+{% endblock %}

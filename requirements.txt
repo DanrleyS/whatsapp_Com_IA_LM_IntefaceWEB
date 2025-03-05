@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+openai
+scikit-learn
+numpy
+python-dotenv
+pydantic
+requests
+pandas
+nltk
+stopwords
