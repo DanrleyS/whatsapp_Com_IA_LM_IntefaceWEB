@@ -24,7 +24,7 @@ Machine Learning – Classificação de mensagens e respostas inteligentes.
 📌 Como Executar o Projeto
 🔹 1️⃣ Clonar o Repositório
 sh
-git clone https://github.com/seu-usuario/whatsapp-ai.git
+git clone https://github.com/DanrleyS/whatsapp_Com_IA_LM_IntefaceWEB.git
 cd whatsapp-ai
 
 🔹 2️⃣ Criar e Ativar um Ambiente Virtual
