@@ -1,142 +1,135 @@
-📩 WhatsApp AI - Processamento Inteligente de Mensagens
-API desenvolvida para classificar e responder mensagens no WhatsApp com inteligência artificial. A API utiliza Machine Learning para classificar mensagens em categorias e fornece respostas contextuais utilizando OpenAI GPT.
+📌 WhatsApp AI - Processamento Inteligente de Conversas 🤖💬
+WhatsApp AI é um projeto que utiliza Inteligência Artificial para processar, classificar e responder mensagens no WhatsApp de forma automática. Com uma interface interativa em Django e uma API robusta em FastAPI, este sistema permite:
 
-🚀 Funcionalidades:
+✅ Processar conversas e responder perguntas contextuais.
+✅ Classificar mensagens automaticamente em categorias.
+✅ Interagir com um chatbot inteligente.
+✅ Treinar um modelo de aprendizado de máquina com novos dados.
 
-📌 Classificação Inteligente de Mensagens
-A API classifica mensagens em:
-trabalho: relacionadas a atividades profissionais.
-sugestoes_locais: pedidos de recomendações de locais.
-perguntas_gerais: perguntas gerais que podem ser respondidas pela IA.
-outros: mensagens sem classificação específica.
+🔥 Ideal para empresas, assistentes virtuais e automação de mensagens!
 
-💬 Geração de Respostas com OpenAI GPT
-Responde automaticamente perguntas gerais.
-📍 Integração com Google Maps
-Sugere locais com base no contexto da mensagem.
+🚀 Recursos Principais
+🔹 Processamento de Conversas – Envia uma conversa e recebe respostas com base no contexto.
+🔹 Classificação de Mensagens – Categoriza mensagens automaticamente.
+🔹 Chatbot – Um assistente de IA que responde a perguntas.
+🔹 Chatbot Conversacional – Mantém contexto e interage de forma mais natural.
+🔹 Treinamento de Modelo – Aprimore a IA treinando com novas mensagens e categorias.
 
-🛠️ Tecnologias Utilizadas
-FastAPI - Framework para criação da API REST.
-scikit-learn - Treinamento do modelo de Machine Learning para classificação.
-OpenAI GPT - Responde a perguntas gerais.
-Google Maps API - Busca locais recomendados.
-pandas & joblib - Manipulação de dados e persistência do modelo.
+🛠 Principais Tecnologias Utilizadas
+Django – Framework Web para a interface gráfica.
+FastAPI – Backend rápido para processamento das mensagens.
+Python – Linguagem principal do projeto.
+Machine Learning – Classificação de mensagens e respostas inteligentes.
 
-📥 Instalação e Configuração
-1️⃣ Clone o repositório:
-bash:
-git clone https://github.com/seu-usuario/whatsapp_AI.git
-cd whatsapp_AI
+📌 Como Executar o Projeto
+🔹 1️⃣ Clonar o Repositório
+sh
+git clone https://github.com/seu-usuario/whatsapp-ai.git
+cd whatsapp-ai
 
-2️⃣ Crie um ambiente virtual e ative (opcional):
-bash:
+🔹 2️⃣ Criar e Ativar um Ambiente Virtual
+sh
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
+source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate  # Windows
 
-3️⃣ Instale as dependências:
-bash:
+🔹 3️⃣ Instalar Dependências
+sh
 pip install -r requirements.txt
 
-4️⃣ Crie um arquivo .env e configure suas chaves:
-ini
-OPENAI_API_KEY= "sua-chave-da-openai"
-GOOGLE_MAPS_API_KEY= "sua-chave-do-google-maps"
+🔹 4️⃣ Iniciar o Servidor FastAPI (Backend)
+sh
+uvicorn main:app --reload --host 127.0.0.1 --port 8001
 
-5️⃣ Treine o modelo de Machine Learning:
-bash:
-python models/train_model.py
+🔹 5️⃣ Iniciar o Servidor Django (Frontend)
+sh
+python manage.py runserver 8000
+📌 Agora, acesse: http://127.0.0.1:8000 e comece a interagir com a interface!
 
-6️⃣ Execute a API:
-bash:
-uvicorn main:app --reload
-A API estará disponível em http://127.0.0.1:8000.
+🖥 Demonstração da Interface
+A interface é simples e intuitiva. Veja alguns exemplos das telas principais:
 
-📡 Endpoints da API
-🔹 1. Classificação e Resposta de Mensagens
-POST /classificar_mensagem
+📜 Processamento de Conversas
+✅ Insira uma conversa em formato JSON
+✅ Pergunte algo sobre a conversa
+✅ Receba a resposta com base no contexto
 
-📌 Descrição: Classifica a mensagem e retorna a categoria com uma resposta adequada.
+🔹 Exemplo de Entrada:
 
-📥 Exemplo de Requisição:
-json:
-
-{
-  "mensagem": "Onde fica um bom restaurante para almoçar? Preciso também revisar um relatório urgente para o cliente."
-}
-
-📤 Exemplo de Resposta:
-json:
-{
-  "categoria": "trabalho",
-  "resposta": "Mensagem classificada como trabalho. Nenhuma consulta externa necessária."
-}
-
-📤 Outras categorias:
-Sugestões de Locais
-Perguntas Gerais
-Outros
-
-🔹 2. Treinar o Modelo de Machine Learning
-POST /train_model
-
-📌 Descrição: Treina o modelo com novos dados para melhorar a classificação de mensagens.
-
-📥 Exemplo de Requisição:
-
-json:
-{
-  "dados": [
-    {"mensagem": "Tem reunião hoje?", "categoria": "trabalho"},
-    {"mensagem": "Sabe onde tem uma farmácia?", "categoria": "sugestoes_locais"},
-    {"mensagem": "O que é inteligência artificial?", "categoria": "perguntas_gerais"}
-  ]
-}
-
-📤 Exemplo de Resposta:
 json
-{
-  "status": "Modelo treinado com sucesso!"
-}
-
-🔹 3. Processar conversas
-POST /processar_conversa
-
-📌 Descrição: Processa uma conversa e retorna respostas com relação a ela.
-
-📥 Exemplo de Requisição:
-
-json>
 {
     "conversa": [
         {"usuario": "João", "mensagem": "Oi, pessoal! Vamos marcar a reunião?", "hora_envio": "2025-02-18T09:00:00"},
-        {"usuario": "Maria", "mensagem": "Bom dia! Tudo bem. Que tal às 14h?", "hora_envio": "2025-02-18T09:01:00"},
-        {"usuario": "Carlos", "mensagem": "14h está ótimo para mim.", "hora_envio": "2025-02-18T09:02:30"},
-        {"usuario": "Ana", "mensagem": "Por mim também.", "hora_envio": "2025-02-18T09:03:15"},
-        {"usuario": "João", "mensagem": "Perfeito! Então, reunião marcada para às 14h.", "hora_envio": "2025-02-18T09:04:00"},
-        {"usuario": "Carlos", "mensagem": "Vocês viram o último jogo de xadrez do Magnus Carlsen?", "hora_envio": "2025-02-18T10:00:00"},
-        {"usuario": "João", "mensagem": "Sim! Que partida incrível! Ele jogou muito bem.", "hora_envio": "2025-02-18T10:01:45"}
+        {"usuario": "Maria", "mensagem": "Bom dia! Tudo bem. Que tal às 14h?", "hora_envio": "2025-02-18T09:01:00"}
     ],
     "pergunta": "Que horas será a reunião?"
 }
+🔹 Saída Esperada:
+json
 
-📤 Exemplo de Resposta:
+{"resposta": "A reunião está marcada para às 14hm conforme sugerido por Maria"}
 
-json:
+🏷️ Classificação de Mensagens
+✅ Envie uma mensagem
+✅ Receba a categoria correspondente
+
+🔹 Exemplo de Entrada:
+json
+{"mensagem": "Tem reunião hoje?"}
+
+🔹 Saída Esperada:
+json
+categoria: Trabalho
+Mensagem classificada como trabalho. Nenhuma consulta externa necessária.
+Existem outras categorias como "Sugestões locais": o qual fornece um endereço com base no google maps.
+"perguntas gerais", que responde qualquer pergunta com tecnologia de IA.
+
+🤖 Chatbot Inteligente
+✅ Converse com a IA e receba respostas úteis.
+
+🔹 Exemplo de Pergunta:
+json
+{"mensagem": "Qual o endereço da empresa?"}
+
+🔹 Saída Esperada:
+json
+{"resposta": "A empresa fica na Rua Exemplo, 123, São Paulo - SP."}
+
+💬 Chatbot Conversacional
+✅ Mantém o contexto e responde de forma mais natural.
+✅ Cada usuário tem um ID exclusivo.
+
+🔹 Exemplo de Entrada:
+json
 {
-  "resposta": "A Reunião será as 14 horas, conforme sugerido por Maria"
+    "user_id": "13",
+    "mensagem": "Qual o endereço completo?"
 }
-🏗️ Estrutura do Projeto
 
-whatsapp_AI/
-│── models/         # Modelos de Machine Learning
-│── services/       # Serviços de processamento de mensagens
-│── utils/          # Funções auxiliares
-│── main.py         # Arquivo principal da API
-│── requirements.txt # Dependências do projeto
-│── .env            # Configurações de API Keys
+🔹 Saída Esperada:
+json
+{"resposta": "O endereço é Av. Paulista, 1000, São Paulo - SP."}
 
-📝 Notas Finais
-O modelo de Machine Learning é treinado com um conjunto de mensagens previamente classificadas.
-A API pode ser expandida para suportar novas funcionalidades, como integração com outros serviços.
-Feedbacks e melhorias são bem-vindos! 🚀
+📊 Treinar Modelo de IA
+✅ Adicione novas mensagens e categorias para melhorar a IA.
+🔹 Exemplo de Entrada:
+
+json
+
+mensagem: Tem reunião hoje?, categoria: Trabalho
+mensagem: Onde tem uma farmácia?, categoria: Sugestões Locais
+mensagem: O que é inteligência artificial?, categoria: Perguntas Gerais
+
+🔹 Saída Esperada:
+
+json
+{"status": "Treinamento concluído com sucesso!"}
+
+🔥 Possíveis Melhorias Futuras
+✅ Autenticação de usuários para histórico de conversas.
+✅ Integração com WhatsApp real via Twilio ou API oficial.
+✅ Melhoria nos modelos de Machine Learning para mais precisão.
+
+🎯 Contribuições
+Quer contribuir com o projeto? Sinta-se à vontade para abrir uma Issue ou enviar um Pull Request!
+
